@@ -1,0 +1,19 @@
+{
+  "name": "knowyourhostelmess",
+  "version": "1.0.0",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-ensure-login": "^0.1.1",
+    "dateformat": "^3.0.3",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.4.0",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.1",
+    "mysql": "^2.15.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "password": "^0.1.1",
+    "sha256": "^0.2.0",
+    "yargs": "^11.0.0"
+  }
+}

@@ -1,0 +1,351 @@
+
+<html>
+    {{> header}}
+    <body>
+        <div class="wrapper">
+            <div class="main-panel" style="width: 100%;">
+                {{>nav}}
+                <div class="content">    
+                        <div class="row ">
+                            <div class="col-xm-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="card " >
+                                    <img class="card-img-top" src="/images/hostels/{{hostel.hid}}.jpg" alt="Card image" style="width:100%;height:400px; margin-top: 10px;">
+                                    <div class="card-body">
+                                      <h4 class="card-title ">{{hostel.name}}</h4>
+                                      <p class="card-text">{{hostel.description}}<br>
+                                        Per Day Expenses:  ₹{{hotsel.pde}}
+                                      </p>
+                                    </div>
+                                </div>      
+                            </div>
+                            <div class="col-xm-12 col-sm-12 col-md-8 col-lg-8 ">
+                                <nav class="navbar navbar-expand-lg bg-primary" style="background:#f96332 !important">
+                                  <div class="container">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span style="background-color:white"  class="navbar-toggler-bar navbar-kebab"></span>
+                                    <span style="background-color:white" class="navbar-toggler-bar navbar-kebab"></span>
+                                    <span style="background-color:white" class="navbar-toggler-bar navbar-kebab"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNav">
+                                      <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                          <a style="color:white" class="nav-link" href="#" onclick="tabBills()">Bills</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a  style="color:white" href='#' class="nav-link" onclick="tabNotification()">Notifications </a>
+                                        </li>
+                                       <li class="nav-item">
+                                          <a style="color:white" href='#' class="nav-link" onclick="tabMess()">Mess Menu</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a style="color:white" class="nav-link" href="#" onclick="tabMember()">Mess members</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </nav>
+                                <div id="king" style="display:none" animated fadeInDown>
+                                    <div class="row">
+                                        {{#each hostelUsers}}
+                                            <div class="col-md-4">
+                                                <div class="card card-user">
+                                                    <div class="image">
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="author">
+                                                            <a href="#">
+                                                                <img class="avatar border-gray" src="images/users/{{uid}}.jpg" alt="...">
+                                                                <h5 class="title">{{name}}</h5>
+                                                            </a>
+                                                            <p class="description">
+                                                                <h6>Contact</h6>
+                                                            </p>
+                                                        </div>
+                                                        <p class="description text-center">
+                                                            <b>{{contact}}</b>
+                                                        </p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="button-container">
+                                                        <a href="{{facebook}}" class="btn btn-neutral btn-icon btn-round btn-lg">
+                                                            <i class="fab fa-facebook-f"></i>
+                                                        </a>
+                                                        <a href="{{twiter}}" class="btn btn-neutral btn-icon btn-round btn-lg">
+                                                            <i class="fab fa-twitter"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        {{/each}}       
+                                    </div>
+                                </div>
+                                <div style="align-items: center;display: none;" id="notification" class=" animated fadeIn" >
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Notifications</h4>
+                                                </div>
+                                                 {{#each topNotifications}}
+                                                <div class="card-body">
+                                                  <div class="alert alert-info">
+                                                    <span>
+                                                      <b>{{title}} </b>
+                                                      <br>{{text}}</span>
+                                                    <br>
+                                                    <div class="row">
+                                                      <div class="col-lg-6">
+                                                        <b>{{date}}</b>
+                                                      </div>
+                                                      <div class="col-lg-6" style="text-align: right;">
+                                                        --{{name}}
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              {{/each}}
+                                            <div style="text-align: right;margin-right: 18px;margin-bottom: 16px;"><a href="/notifications?hid={{hostel.hid}}">View all</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="messMenu" class="tabcontent animated fadeIn"  style="display:none;width: 100%;height: 700px;">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Mess Menu
+                                            {{#ifCond hostel.hid user.hostel_id}}
+                                                <a onclick="msg4()" class="text-primary" style="cursor: pointer; position: absolute; top: 30px; right: 20px;"><i class="now-ui-icons ui-1_settings-gear-63"></i></a>
+                                            </h4>
+                                            {{/ifCond}}
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                {{>mess_menu}}
+                                                {{>edit_mess_menu}}
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div id="bills"class="tabcontent animated fadeIn"  style="width: 100%;height: 700px;">
+                                <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Mess Bills</h4>
+                                        </div>
+                                        <div class="dropdown-divider" style="border-width: 2px"></div>
+                                        <div class="card-body">
+                                            <form action="/hostel" method="get">
+                                            <b>Month &nbsp;</b>
+                                                <select class ="custom-select mb-2 mr-sm-2 mb-sm-0" name="month">
+                                                    <option selected="true">Choose...</option>
+                                                    <option value="1">January</option>
+                                                    <option value="2">Febrary</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">Octuber</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                                <input type="hidden" name="hid" value="{{hostel.hid}}">
+                                                <button class="btn btn-primary" type="submit">Go</button>
+                                            </form>
+                                            <div class="card">
+                                                <div class="card-title">
+                                                    <h4>Bills</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <table class="table table-responsive table-bordered" style="" id="view_menu">
+                                                        <thead class="text-primary">
+                                                            <tr>
+                                                                <th style="text-align: center;">Date</th>
+                                                                <th style="text-align: center;">Amount</th>
+                                                                <th style="text-align: center;">View</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {{#each mess_bills}}
+                                                            <tr>
+                                                                <td>{{date}}</td>
+                                                                <td>{{price}}</td>
+                                                                <td>
+                                                                    <a href="/bills/{{file}}.pdf">
+                                                                        View 
+                                                                    </a>&nbsp;
+                                                                         {{#ifCond ../hostel.hid ../user.hostel_id}}
+                                                                            <form action="/deleteBill" method="post">
+                                                                                <input type="hidden" name="hid" value="{{hid}}">
+                                                                                <input type="hidden" name="file" value="{{file}}">
+                                                                                 <button type="submit" aria-hidden="true" class="close danger btn-primary" style="border-radius: 4px; background-color:red">
+                                                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
+                                                                             </button>
+                                                                            </form>
+                                                                        {{/ifCond}}
+                                                                        
+                                                                </td>
+                                                            </tr>
+                                                            {{/each}}
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+
+        var noti=document.getElementById("notification");
+        var bills=document.getElementById("bills");
+        var member=document.getElementById("king");
+        var mess=document.getElementById("messMenu");
+        var edit_menu = document.getElementById("edit_menu");
+        var view_menu = document.getElementById("view_menu");
+        function msg4(){
+            if(edit_menu.style.display == 'none'){
+                view_menu.style.display='none';
+                edit_menu.style.display='block';
+                bills.style.display="none";
+            }
+            else
+                edit_menu.style.display='block';
+        }
+
+        function tabBills() {
+
+        
+        if(bills.style.display =='none'){
+                mess.style.display="none";
+                bills.style.display="block";
+                member.style.display='none';
+                noti.style.display='none';
+           
+            }else{
+            
+                bills.style.display="block";
+                
+            }
+        }
+        function tabMess() {
+
+        
+        if(mess.style.display =='none'){
+                mess.style.display="block";
+                member.style.display='none';
+                noti.style.display='none';
+                bills.style.display="none";
+           
+            }else{
+            
+                mess.style.display="block";
+                
+            }
+        }
+        
+        
+                function tabNotification() {
+        
+          
+                  //  var noti = document.getElementById("notification");
+            
+            if(noti.style.display =='none'){
+                noti.style.display="block";
+                member.style.display='none';
+                mess.style.display='none';
+                bills.style.display="none";
+           
+            }else{
+            
+                noti.style.display="block";
+                
+            }
+        }
+        
+        function tabMember() {
+            if(member.style.display =='none'){
+                member.style.display="block";
+                noti.style.display="none";
+                mess.style.display='none';
+                bills.style.display="none";0
+           
+            }else{
+            
+                member.style.display="block";
+                
+            }
+        }
+        </script>
+        {{>footer}}
+    </body>
+    <script src="../public/js/core/jquery.min.js"></script>
+<script src="../public/js/core/popper.min.js"></script>
+<script src="../public/js/core/bootstrap.min.js"></script>
+<script src="../public/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="../public/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../public/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../public/js/now-ui-dashboard.js?v=1.0.1"></script>
+<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="../public/demo/demo.js"></script>
+<script>
+    $(document).ready(function() {
+        // Javascript method's body can be found in public/js/demos.js
+        demo.initDashboardPageCharts();
+    });
+</script>
+</html>
+
+
+
+
+
+
+<!-- <html>
+    <body background="images/background.jpg">
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xm-10 col-sm-12 col-md-5 col-lg-4">
+                    <img class="shadow-nohover" src="/images/hostels/{{hostel.hid}}.jpg" style="width: 100%; height: 350px; padding-top: 15px; padding-bottom: 15px; padding-left: 0px; padding-right: 0px;">
+                </div>
+                <div class="col-xm-10 col-sm-12 col-md-6 col-lg-4 bg-light">
+                    <h2 style="padding-top: 12px;">{{hostel.name}}</h2>
+                    <hr style="border-width: 2px; border-color: #333333">
+                    <h4>Hostel Description:</h4> <p>{{hostel.description}}</p>
+                    <h4>Per Day Expenses:  ₹{{hotsel.pde}}</h4>
+                </div>
+                <div class="col-lg-3 bg-dark" style="color: white">
+                    <h3 align="center">Notifications</h3>
+                    <hr style="border-color: white; border-width: 3px;">
+                    {{#each topNotifications}}
+                    <h5>{{title}}:</h5>
+                    <p style="font-size: 14px;">{{text}}</p>
+                    <hr style="border-color: white; border-width: 2px;">
+                    {{/each}}
+                    <a href="/notifications?hid={{hostel.hid}}">View all</a>
+                </div>
+            </div>
+            <table class="table">
+                <tr><td>Date</td><td>Price</td><td>Get it</td></tr>
+            {{#each mess_bills}}
+                <tr><td>{{date}}</td><td>{{price}}</td><td><a href="/bills/{{file}}.pdf" class="btn">Get it</a></td></tr>
+            {{/each}}
+            </table>
+            </table>
+        </div>
+    </body>
+</html>
+ -->

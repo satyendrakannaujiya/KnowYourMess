@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  {{>header}}
+<body>
+  <style type="text/css">
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+  </style>
+  {{>nav}}
+  <h2 align="center" style="margin-top: 16px;">{{hostelDetails.name}}</h2>
+  <div class="container shadow-nohover">
+    <div class="row">
+      <div class="col-xm-12 col-sm-12 col-md-8 col-lg-4 bg-dark shadow-nohover" style="margin:0 auto; padding: 0 auto;color: white; margin-top: 30px;height: 430px;">
+        <h4 align="center" style="padding-top: 8px">Know your mess</h4>
+          <hr style="border-color: #000000; border-width: 1px;">
+        <div>
+          <h5>Current month's</h5>
+          <ul>
+            <li><b>Per day cost: ₹</b>200</li>
+            <li><b>Total expanses: ₹</b>750000</li>
+            <li><b>Running days: </b>21</li>
+          </ul>
+          <h5>Previous month's</h5>
+          <ul>
+            <li><b>Per day cost: ₹</b>200</li>
+            <li><b>Total expanses: ₹</b>750000</li>
+            <li><b>Running days: </b>21</li>
+          </ul>
+          <h5>This Sessions</h5>
+          <ul>
+            <li><b>Avg. Per day cost: ₹</b>200</li>
+            <li><b>Total expanses: ₹</b>750000</li>
+            <li><b>Running days: </b>21</li>
+          </ul>
+        </div>
+    </div>
+    <div class="col-xm-12 col-sm-12 col-md-10 col-lg-7 shadow-nohover" style="margin: 0 auto; padding: 0 auto;margin-top: 30px;">
+      
+      <div class="tab bg-dark">
+        <button class="tablinks" onclick="openTab(event, 'notifications')">Notifications</button>
+        <button class="tablinks" onclick="openTab(event, 'uploadBills')">Bills</button>
+        <button class="tablinks" onclick="openTab(event, 'messMenu')">Edit Mess Menu</button>
+        <button class="tablinks" onclick="openTab(event, 'changePDE')">Change PDE</button>
+      </div>
+      <div id="notifications" class="tabcontent">
+        <form action="/addNotification" method="post">
+          <h3>Add Notification</h3>
+          <div class="row jumbotron" style="margin-top: 16px;">
+            <div class="col-lg-4">
+              <p>Title:</p>
+              <input type="text" name="notificationTitle" class="form-control" placeholder="Title" maxlength="20">   
+            </div>
+            <div class="col-lg-7">
+              <p>Notification</p>
+              <textarea class="form-control" name="notificationText" placeholder="Enter Notification to send here"></textarea>
+            </div>
+            <button class="form-control btn btn-primary" type="submit" style="margin-top: 8px;">Add</button>
+          </div>
+        </form>
+      </div>
+      <div id="uploadBills" class="tabcontent">
+        <div class="container">
+          <div class="row">
+            <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12" style="margin: 0 auto; padding: 0 auto;">
+              <form class="jumbotron shadow" action="/UploadBill" method="post" encType="multipart/form-data">
+                <input type="hidden" name="hid" value="{{hostelDetails.hid}}"/>
+                <input type="file" class="col-lg-12 col-md-12 col-sm-12 col-xm-12 btn btn-secondary form-control shadow" style="margin-top: 5px;" name="mess_bill">
+                <br><b>Mess Bill Price</b><input type="number" class="form-control" placeholder="Enter total mess bill." value="0" name="price"><br>
+                <b>Mess Bill Date</b><input type="date" class="form-control" placeholder="Mess Bill Date" name="date"><br>
+                <button type="submit" class="form-control btn btn-primary shadow">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="messMenu", class="tabcontent">
+        <form>
+          <table class="table table-responsive table-dark">
+          <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Snacks</th>
+            <th>Dinner</th>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td><input class="form-control" type="text" name="monBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="monLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="monSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="monDinner" placeholder="Dinner"></td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td><input class="form-control" type="text" name="tueBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="tueLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="tueSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="tueDinner" placeholder="Dinner"></td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td><input class="form-control" type="text" name="wedBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="wedLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="wedSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="wedDinner" placeholder="Dinner"></td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td><input class="form-control" type="text" name="thuBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="thuLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="thuSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="thuDinner" placeholder="Dinner"></td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td><input class="form-control" type="text" name="friBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="friLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="friSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="friDinner" placeholder="Dinner"></td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td><input class="form-control" type="text" name="satBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="satLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="satSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="satDinner" placeholder="Dinner"></td>
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td><input class="form-control" type="text" name="sunBreakfast" placeholder="Breakfast"></td>
+            <td><input class="form-control" type="text" name="sunLunch" placeholder="Lunch"></td>
+            <td><input class="form-control" type="text" name="sunSnacks" placeholder="Snacks" value="N/A"></td>
+            <td><input class="form-control" type="text" name="sunDinner" placeholder="Dinner"></td>
+          </tr>
+        </table>
+        <button class="btn btn-primary form-control" type="submit">Submit</button>
+        </form>
+      </div>
+      <div id="changePDE", class="tabcontent">
+        Blank
+      </div>
+  </div>
+    </div>
+<!-- Tab content -->
+  
+  <script type="text/javascript">
+    function openTab(evt, tabName) {
+    // Declare all variables
+      var i, tabcontent, tablinks;
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+   {{> footer}}
+</body>
+</html>

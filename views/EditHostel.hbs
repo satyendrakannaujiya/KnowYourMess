@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	{{>header}}
+<body style="background: #EEEEEE">
+	{{>nav}}
+	
+
+	<div class="container">
+		<div class="row">
+			<div class="card col-xm-12 col-sm-12 col-md-10 col-lg-6" style="margin: 40px auto; padding: 30px;" >
+				<form  action="/editHostel" method="post" encType="multipart/form-data">
+					<input type="hidden" name="hid" value="{{hostelDetails.hid}}"/>
+					<div align="center">
+						<img src="images/hostels/{{hostelDetails.hid}}.jpg"  class = "img-raised rounded img-fluid" style="margin: 20px auto;" width="200" height="200">
+						<br>
+						<input type="file" class="col-lg-3 col-md-3 col-sm-3 col-xm-1" style="margin-top: 5px;" name="image">
+				</div>
+				<b>Hostel Name</b><input type="text" class="form-control" placeholder="Enter Name" value="{{hostelDetails.name}}" name="name"><br>
+				<b>Hostel Description</b><input type="text" class="form-control" placeholder="Hostel Description" value="{{hostelDetails.description}}" name="description"><br>
+				
+				<button type="submit" class="form-control btn btn-primary shadow">Submit</button>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+	{{>footer}}
+</body>
+</html>

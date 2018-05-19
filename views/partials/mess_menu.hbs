@@ -1,0 +1,23 @@
+
+ <table class="table table-responsive table-bordered" style="" id="view_menu">
+    <thead class="text-primary">
+        <tr>
+            <th style="text-align: center;">Day</th>
+            <th style="text-align: center;">Breakfast</th>
+            <th style="text-align: center;">Lunch</th>
+            <th style="text-align: center;">Snacks</th>
+            <th style="text-align: center;">Dinner</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each mess_menu}}
+        <tr>
+            <td>{{day}}</td>
+            <td>{{breakfast}}</td>
+            <td>{{lunch}}</td>
+            <td>{{evening}}</td>
+            <td>{{dinner}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

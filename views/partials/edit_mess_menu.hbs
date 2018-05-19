@@ -1,0 +1,27 @@
+
+<form action="/changeMenu" method = "post"  style="display: none;" id="edit_menu">
+<input type="hidden" name="hid" value="{{hostel.hid}}">
+<table class="table table-responsive table-bordered">
+    <thead class="text-primary">
+        <tr>
+         <th style="text-align: center;">Day</th>
+            <th style="text-align: center;">Breakfast</th>
+            <th style="text-align: center;">Lunch</th>
+            <th style="text-align: center;">Snacks</th>
+            <th style="text-align: center;">Dinner</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each mess_menu}}
+        <tr>
+            <td>{{day}}</td>
+            <td><input type="text" class="form-control" name="{{day}}Breakfast" placeholder="Breakfast" value="{{breakfast}}"></td>
+            <td><input type="text" class="form-control" name="{{day}}Lunch" placeholder="Lunch" value="{{lunch}}"></td>
+            <td><input type="text" class="form-control" name="{{day}}Evening" placeholder="Evening" value="{{evening}}"></td>
+            <td><input type="text" class="form-control" name="{{day}}Dinner" placeholder="Dinner" value="{{dinner}}"></td>
+        </tr>
+        {{/each}}
+  </tbody>
+ </table>
+ <button class="btn btn-primary form-control" type="submit" style=" background-color: #ff6900"><b>Submit</b></button>
+</form>

@@ -1,0 +1,172 @@
+ {{!-- New nav Baar --}}
+
+<div class="panel-header panel-header-sm" style="height:200px;padding-top:40px;margin-bottom:15px">
+  <div class="header">
+  </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-wrapper">
+      <img src="images/logo.png" style="width:140px;height:140px;padding:20px;float:left;">
+      <h2 class="title" style="width: 100%">Motilal Nehru National Institute Of Technology</h2>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+      <ul class="navbar-nav">
+        {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/Manage">
+            <h4 style="margin:0px">Management</h4>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <h4 style="margin:0px;display:inline">
+              {{user.name}}
+            </h4>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/EditProfile">Edit Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </li>
+        {{else}}
+
+        <li class="nav-item">
+          <a class="nav-link" href="#pablo" data-toggle="modal" data-target="#loginModal">
+            <h4 style="margin: 0px">
+              Login
+            </h4>
+          </a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
+<!--
+  <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top ">
+    <div class="container-fluid">
+      <div class="navbar-wrapper">
+        <a class="navbar-brand" href="/">
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
+        aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+         {{#if user}}
+          <ul class="navbar-nav">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      Hi, {{user.name}}
+                    </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/EditProfile">Edit Profile</a>
+                    <a class="dropdown-item" href="/Manage">Management</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                  </div>
+                </div>
+          </ul>
+        {{else}}
+        <ul class="navbar-nav">
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#loginModal">
+              Login
+            </button>
+          </div>
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+  -->
+{{!-- Modal --}}
+
+
+<!-- <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="position: absolute;top: 20%">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content " style="background-color:#1e3d60">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="login" method="post">
+            <div class="form-group" style="padding: 10px">
+              <input type="text" class="form-control" placeholder="Enter Username" name="uid">
+              <input type="password" class="form-control" placeholder="Enter Password" name="password" style="margin-top: 20px">
+              <button type="submit" class="btn btn-primary form-control" style="margin-top: 20px; color:bisque;">Login</button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+<div class="modal fade modal-primary " id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content ">
+      <div class="card card-login card-plain">
+        <!-- <div class="modal-header justify-content-center" >
+          <button  type="button" class="close" data-dismiss="modal" aria-hidden="true"  >
+            <i class="now-ui-icons ui-1_simple-remove" ></i>
+          </button>
+
+          <div class="header header-primary text-center">
+                          <div class="logo-container">
+                              <img src="/assets/img/now-logo.png" alt="">
+                          </div>
+                      </div>
+        </div> -->
+
+        <div class="modal-header bg-primary">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body bg-primary">
+          <form class="form" method="post" action="/login">
+            <div class="card-content">
+              <div class="input-group no-border form-control-lg">
+                <span class="input-group-addon" style="background: white">
+                  <i class="now-ui-icons users_circle-08"></i>
+                </span>
+                <input style="background: white" type="text" class="form-control" name="uid" placeholder="Enter the Login ID">
+              </div>
+
+              <div class="input-group no-border form-control-lg">
+                <span class="input-group-addon" style="background: white">
+                  <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                </span>
+                <input style="background: white" type="password" placeholder="Enter your Password" name="password" class="form-control">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary form-control" style="margin-top: 20px; color: black;">Login</button>
+          </form>
+        </div>
+        <div class="modal-footer text-center pt-4 bg-primary" style="margin-bottom: -20px;">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

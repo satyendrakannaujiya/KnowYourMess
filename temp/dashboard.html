@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <style>
+                .dropdown-menu >   a:hover {
+                   color:   #f4d641   !important;
+                   text-decoration: none;
+                   background-color:  #0066FF  !important;
+                   
+                } 
+                img {
+    max-width: 100%;
+    max-height: 100%;
+    height: 180px;
+}
+
+.portrait {
+    height: 80px;
+    width: 30px;
+}
+
+.landscape {
+    height: 30px;
+    width: 80px;
+}
+
+.square {
+    height: 75px;
+    width: 75px;
+}
+                </style>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../public/images/apple-icon.png">
+    <link rel="icon" type="image/png" href="../public/images/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Now UI Dashboard by Creative Tim</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- CSS Files -->
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../public/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../public/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="panel"  >
+    <nav class="navbar navbar-expand-lg bg-primary">
+                                  <div class="container">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNav">
+                                      <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                          <a  href='#' class="nav-link" onclick="tabNotification()">Notifications </a>
+                                        </li>
+                                       <li class="nav-item">
+                                          <a href='#' class="nav-link" onclick="tabMess()">Mess Menu</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" href="#" onclick="tabMember()">Mess members</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </nav>
+</body>
+<!--   Core JS Files   -->
+<script src="../public/js/core/jquery.min.js"></script>
+<script src="../public/js/core/popper.min.js"></script>
+<script src="../public/js/core/bootstrap.min.js"></script>
+<script src="../public/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chart JS -->
+<script src="../public/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="../public/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../public/js/now-ui-dashboard.js?v=1.0.1"></script>
+<!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+<script src="../public/demo/demo.js"></script>
+<script>
+    $(document).ready(function() {
+        // Javascript method's body can be found in public/js/demos.js
+        demo.initDashboardPageCharts();
+    });
+</script>
+
+</html>

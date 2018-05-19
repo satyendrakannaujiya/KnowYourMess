@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+ {{>header}}
+<body>
+  <div class="wrapper">
+    <div class="main-panel" style="width: 100%;">
+       {{>nav}}
+      <div class="content" >
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Notifications</h4>
+              </div>
+               {{#each topNotifications}}
+                <div class="card-body">
+                  <div class="alert alert-info">
+                    <span>
+                      <b>{{title}} </b>
+                      <br>{{text}}</span>
+                    <br>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <b>{{date}}</b>
+                      </div>
+                      <div class="col-lg-6" style="text-align: right;">
+                        --{{name}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+              <div style="text-align: right;margin-right: 18px;margin-bottom: 16px;">
+                <a href="/notifications?hid=0">View all</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-xm-12 col-lg-8">
+            <div class="row">
+              {{#each hostel}}
+                <div class="col-xs-4 col-lg-4 col-md-6">
+                    <div class="card card-chart">
+                      <div class="card-header">
+                        <div class="row">
+                          <div class="col-lg-10">
+                            <a href="/hostel?hid={{hostelId}}">
+                              <h4 class="card-title"> {{hostelName}}</h4>
+                            </a>
+                          </div>
+                          <div style="position:absolute;top:10px;right:10px">
+                            {{#if ../user.is_admin}}
+                            <p class="text-right">
+                              <a href="/EditHostel?hid={{hostelId}}">
+                                <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                              </a>
+                            </p>
+                            {{/if}}</div>
+                          </div>
+                      <a href="/hostel?hid={{hostelId}}">
+                         <img class="card-img-top" src="images/hostels/{{hostelId}}.jpg" alt="Card image cap" >
+                       </a>
+                      </div>
+                      <div class="card-footer">
+                        <div class="stats">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Login -->
+  {{>footer}}
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	{{>header}}
+<body background="/images/background.jpg">
+	{{>nav}}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xm-12 col-sm-12 col-md-10 col-lg-6" style="margin: 0 auto; padding: 0 auto;">
+				<form class="jumbotron shadow" action="/UploadBill" method="post" encType="multipart/form-data">
+					<h1>{{hostelDetails.name}}</h1><br>
+					<input type="file" class="col-lg-3 col-md-3 col-sm-3 col-xm-1 btn btn-secondary form-control shadow" style="margin-top: 5px;" name="mess_bill">
+					<br><b>Mess Bill Price</b><input type="number" class="form-control" placeholder="Enter total mess bill." value="0" name="price"><br>
+					<b>Mess Bill Date</b><input type="date" class="form-control" placeholder="Mess Bill Date" name="date"><br>
+					<button type="submit" class="form-control btn btn-primary shadow">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{>footer}}
+</body>
+</html>

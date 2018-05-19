@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head> <style> .btn-primary{
+    background-color:red;
+}</style></head>
+	{{>header}}
+<body style="background: #EEEEEE">
+	<div class="wrapper">
+		<div class="main-panel" style="width: 100%;">
+	{{>nav}}
+	<div class="content" >
+		<div class="">
+				<div class="row justify-content-center">
+					<div class="card col-xm-12 col-sm-12 col-md-10 col-lg-6" style="padding:20px" >
+						<form method="post" action="/login">
+							{{#if error}}<h4 align="center" style="color: red">Wrong Credentials</h4>{{/if}}
+						<b>Enter Username</b><input type="text" class="form-control" placeholder="Enter Name" name="uid"><br>
+						<b>Password</b><input type="password" class="form-control" placeholder="Password" name="password"><br>
+						<button type="submit" class="form-control btn btn-primary">Login</button>
+						</form>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+</div>
+	{{>footer}}
+</body>
+</html>
